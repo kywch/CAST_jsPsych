@@ -764,7 +764,7 @@ var start_choice_practice_page = {
     type: "text",
     cont_key: "o",
     text: "<div class = centerbox><p class = block-text>" +
-        "In this practice block, you will be presented with <b>24</b> trials. " +
+        "In this practice block, you will be presented with <b>" + options_per_block.length.toString() + "</b> trials. " +
         "<p class = block-text>In Easy problems, we expect that you will get more than 90% correct. </p>" +
         "<p class = block-text>In Hard problems, the difficulty is adaptive to your competence, " +
         "so that you will perform at about 70% correct for both word and math problems. </p>" +
@@ -1381,9 +1381,7 @@ function generate_main_block(block_count) {
             }
             return "<div class = centerbox><p class = block-text>" +
                 "<span class='very-large'>Main block " + curr_block.toString() + " / " + num_block.toString() + "</span></p>" +
-                "<p class = block-text>In this block, you got <span class='very-large'><font color='blue'>" +
-                correct_block.toString() + "</font></span> out of " + option_this.length.toString() + " problems correct</p>" +
-                "<p class = block-text>and earned <span class='very-large'><font color='blue'>" +
+                "<p class = block-text>In this block, you earned <span class='very-large'><font color='blue'>" +
                 point_block.toString() + "</font></span> out of " + max_points_block.toString() + " points. </p>" +
                 "<p class = block-text>So far, you earned <span class='very-large'><font color='blue'>" +
                 point_main.toString() + "</font></span> points. </p>" +
