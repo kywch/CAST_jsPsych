@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html class=''>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name="robots" content="noindex">
+    <title>The Experiment Factory: Preview</title>
+    <link rel='stylesheet' type='text/css' href='cast.css'>
+</head>
+
+<body>
+    <script src='https://rawgit.com/kywch/CAST_jsPsych/master/jquery-2.2.4.min.js'></script>
+    <script src='https://rawgit.com/kywch/CAST_jsPsych/master/jspsych.js'></script>
+    <script src='https://rawgit.com/kywch/CAST_jsPsych/master/jspsych-text.js'></script>
+    <script src='https://rawgit.com/kywch/CAST_jsPsych/master/jspsych-poldrack-instructions.js'></script>
+    <script src='https://rawgit.com/kywch/CAST_jsPsych/master/jspsych-single-stim-rev.js'></script>
+    <script src='https://rawgit.com/kywch/CAST_jsPsych/master/poldrack_utils.js'></script>
+    <script src='https://rawgit.com/kywch/CAST_jsPsych/master/probset.js'></script>
+    <script src='https://rawgit.com/kywch/CAST_jsPsych/master/practice_problems.js'></script>
+    <script src='https://rawgit.com/kywch/CAST_jsPsych/master/maadm_201807_confirmation.js'></script>
+
+    <script>
+        $(document).ready(function() {
+
+            sbjId = "test";
+
+            var task_instruct_page1 = '<div class = centerbox><p class = block-text>Welcome to the choose-and-solve task!</p></div>';
+            var task_instruct_page2 = '<div class = centerbox><p class = block-text>This task consists of four parts.</p>  ' +
+                '<p class = block-text>Your performance-based cash bonus will be determined in the last block of 140 trials.</p>' +
+                '<p class = block-text>1. Word practice (12 problems)</p>' +
+                '<p class = block-text>2. Math practice (12 problems)</p>' +
+                '<p class = block-text>3. Choose-and-solve practice (28 trials)</p>' +
+                '<p class = block-text>4. Five blocks of choose-and-solve trials (140 trials)</p></div>'
+            var task_instruct_page = {
+                type: 'poldrack-instructions',
+                data: {
+                    exp_stage: 'task_instruction',
+                    participant: sbjId,
+                },
+                pages: [task_instruct_page1, task_instruct_page2],
+                allow_keys: false,
+                show_clickable_nav: true,
+                timing_post_trial: 1000
+            };
+
+            var maadm_experiment = [];
+            maadm_experiment.push(task_instruct_page);
+            maadm_experiment.push({
+                timeline: sequence_word_practice
+            });
+            maadm_experiment.push({
+                timeline: sequence_math_practice
+            });
+            maadm_experiment.push({
+                timeline: sequence_practice_choice
+            });
+            maadm_experiment.push(enter_mainexp_page);
+            for (var ii = 0; ii < num_block; ii++) {
+                maadm_experiment.push({
+                    timeline: generate_main_block(ii)
+                });
+            }
+
+            jsPsych.init({
+                timeline: maadm_experiment,
+                display_element: "getDisplayElement",
+                on_finish: function(data) {
+                    jsPsych.data.localSave('cast_session.csv', 'csv');
+                    expfactory_finished = true;
+
+                    // generate the key & summary stats
+                    var cnt_trial_type = {};
+                    // for math trials
+                    cnt_trial_type["me0"] = 0; // # of hard math chosen / solved when 2 vs 2
+                    cnt_trial_type["me2"] = 0; //                no choice trials, easy reward 2
+                    cnt_trial_type["mh0"] = 0; // # of hard math chosen / solved when 2 vs 2
+                    cnt_trial_type["mh1"] = 0; //                when 3 vs 2
+                    cnt_trial_type["mh2"] = 0; //                when 4 vs 2
+                    cnt_trial_type["mh3"] = 0; //                when 5 vs 2
+                    cnt_trial_type["mh4"] = 0; //                when 6 vs 2
+                    cnt_trial_type["mh5"] = 0; //                no choice trials, hard reward 5
+                    // for word trials
+                    cnt_trial_type["we0"] = 0; // # of hard word chosen / solved when 2 vs 2
+                    cnt_trial_type["we2"] = 0; //                no choice trials, easy reward 2
+                    cnt_trial_type["wh0"] = 0; // # of hard word chosen / solved when 2 vs 2
+                    cnt_trial_type["wh1"] = 0; //                when 3 vs 2
+                    cnt_trial_type["wh2"] = 0; //                when 4 vs 2
+                    cnt_trial_type["wh3"] = 0; //                when 5 vs 2
+                    cnt_trial_type["wh4"] = 0; //                when 6 vs 2
+                    cnt_trial_type["wh5"] = 0; //                no choice trials, hard reward 5
+                    // count the me, mh, we, wh trials
+                    cnt_trial_type["me_cnt"] = 0;
+                    cnt_trial_type["mh_cnt"] = 0;
+                    cnt_trial_type["we_cnt"] = 0;
+                    cnt_trial_type["wh_cnt"] = 0;
+                    // count correct trials
+                    cnt_trial_type["me_corr"] = 0; // # of correct for easy math
+                    cnt_trial_type["mh_corr"] = 0; //              for hard math
+                    cnt_trial_type["we_corr"] = 0; //              for easy word
+                    cnt_trial_type["wh_corr"] = 0; //              for hard word
+                    // adding problem-solving RTs to get the average
+                    cnt_trial_type["me_rt"] = 0;
+                    cnt_trial_type["mh_rt"] = 0;
+                    cnt_trial_type["we_rt"] = 0;
+                    cnt_trial_type["wh_rt"] = 0;
+
+                    for (var ii = 0; ii < choice_main.length; ii++) {
+                        // counting the # of trial types to get the choice probabilities
+                        // all the problem types need to be defined above.
+                        cnt_trial_type[choice_main[ii]]++;
+                        // add up the # of corrects and RT
+                        let curr_type = choice_main[ii].substring(0, 2);
+                        cnt_trial_type[curr_type + "_cnt"]++;
+                        cnt_trial_type[curr_type + "_corr"] += correct_main[ii];
+                        cnt_trial_type[curr_type + "_rt"] += solvetime_main[ii];
+                    }
+
+                    var mwlevel = {}; // based on history_hard
+                    mwlevel["m"] = 0;
+                    mwlevel["w"] = 0;
+                    for (var ii = 0; ii < choice_level.length; ii++) {
+                        mwlevel[choice_level[ii][0]] += Number(choice_level[ii][1]);
+                    }
+                    var rtsum = 0;
+                    for (var ii = 0; ii < solvetime_main.length; ii++) {
+                        // add all the problem-solving RT to see how much time P spent
+                        rtsum += solvetime_main[ii];
+                    }
+                    var perfKey = "MK" + String(cnt_trial_type["mh_cnt"]) + "P" + String(Math.round(10 * mwlevel["m"] / cnt_trial_type["mh_cnt"])) +
+                        "WR" + String(cnt_trial_type["wh_cnt"]) + "C" + String(Math.round(10 * mwlevel["w"] / cnt_trial_type["wh_cnt"])) +
+                        "BN" + String(point_main) + "TU" + String(Math.round(rtsum / solvetime_main.length));
+
+                    /* variables to generate & pass to Qualtrics
+
+                    // Overall
+                    Qualtrics.SurveyEngine.setEmbeddedData("points", point_main);
+                    Qualtrics.SurveyEngine.setEmbeddedData("bonus", point_main); // 1 cent/point
+                    Qualtrics.SurveyEngine.setEmbeddedData("perfKey", perfKey);
+
+                    // easy_math_cnt, easy_word_cnt, easy_acc_math, easy_acc_word, easy_RT_math, easy_RT_word
+                    Qualtrics.SurveyEngine.setEmbeddedData("easy_math_cnt", cnt_trial_type["me_cnt"] );
+                    Qualtrics.SurveyEngine.setEmbeddedData("easy_word_cnt", cnt_trial_type["we_cnt"] );
+                    Qualtrics.SurveyEngine.setEmbeddedData("easy_acc_math", (cnt_trial_type["me_corr"]/cnt_trial_type["me_cnt"]).toFixed(4) );
+                    Qualtrics.SurveyEngine.setEmbeddedData("easy_acc_word", (cnt_trial_type["we_corr"]/cnt_trial_type["we_cnt"]).toFixed(4) );
+                    Qualtrics.SurveyEngine.setEmbeddedData("easy_RT_math", Math.round(cnt_trial_type["me_rt"]/cnt_trial_type["me_cnt"]) );
+                    Qualtrics.SurveyEngine.setEmbeddedData("easy_RT_word", Math.round(cnt_trial_type["we_rt"]/cnt_trial_type["we_cnt"]) );
+
+                    // hard_math_cnt, hard_word_cnt, hard_level_math, hard_level_word
+                    Qualtrics.SurveyEngine.setEmbeddedData("hard_math_cnt", cnt_trial_type["mh_cnt"] );
+                    Qualtrics.SurveyEngine.setEmbeddedData("hard_word_cnt", cnt_trial_type["wh_cnt"] );
+                    Qualtrics.SurveyEngine.setEmbeddedData("hard_level_math", (mwlevel["m"]/cnt_trial_type["mh_cnt"]).toFixed(4) );
+                    Qualtrics.SurveyEngine.setEmbeddedData("hard_level_word", (mwlevel["w"]/cnt_trial_type["wh_cnt"]).toFixed(4) );
+
+                    // hard_acc_math, hard_acc_word, hard_RT_math, hard_RT_word
+                    Qualtrics.SurveyEngine.setEmbeddedData("hard_acc_math", (cnt_trial_type["mh_corr"]/cnt_trial_type["mh_cnt"]).toFixed(4) );
+                    Qualtrics.SurveyEngine.setEmbeddedData("hard_acc_word", (cnt_trial_type["wh_corr"]/cnt_trial_type["wh_cnt"]).toFixed(4) );
+                    Qualtrics.SurveyEngine.setEmbeddedData("hard_RT_math", Math.round(cnt_trial_type["mh_rt"]/cnt_trial_type["mh_cnt"]) );
+                    Qualtrics.SurveyEngine.setEmbeddedData("hard_RT_word", Math.round(cnt_trial_type["wh_rt"]/cnt_trial_type["wh_cnt"]) );
+
+                    // hard choice probabilities of math trials : hcp_h2e2_math, hcp_h3e2_math, hcp_h4e2_math, hcp_h5e2_math, hcp_h6e2_math, hcp_h456e2_math
+                    let numPerCond = 2*num_block;
+                    Qualtrics.SurveyEngine.setEmbeddedData("hcp_h2e2_math", (cnt_trial_type["mh0"]/numPerCond).toFixed(4) );
+                    Qualtrics.SurveyEngine.setEmbeddedData("hcp_h3e2_math", (cnt_trial_type["mh1"]/numPerCond).toFixed(4) );
+                    Qualtrics.SurveyEngine.setEmbeddedData("hcp_h4e2_math", (cnt_trial_type["mh2"]/numPerCond).toFixed(4) );
+                    Qualtrics.SurveyEngine.setEmbeddedData("hcp_h5e2_math", (cnt_trial_type["mh3"]/numPerCond).toFixed(4) );
+                    Qualtrics.SurveyEngine.setEmbeddedData("hcp_h6e2_math", (cnt_trial_type["mh4"]/numPerCond).toFixed(4) );
+                    Qualtrics.SurveyEngine.setEmbeddedData("hcp_h456e2_math",
+                            ((cnt_trial_type["mh2"]+cnt_trial_type["mh3"]+cnt_trial_type["mh4"])/(3*numPerCond)).toFixed(4) );
+
+                    // hard choice probabilities of word trials : hcp_h2e2_word, hcp_h3e2_word, hcp_h4e2_word, hcp_h5e2_word, hcp_h6e2_word, hcp_h456e2_word
+                    Qualtrics.SurveyEngine.setEmbeddedData("hcp_h2e2_word", (cnt_trial_type["wh0"]/numPerCond).toFixed(4) );
+                    Qualtrics.SurveyEngine.setEmbeddedData("hcp_h3e2_word", (cnt_trial_type["wh1"]/numPerCond).toFixed(4) );
+                    Qualtrics.SurveyEngine.setEmbeddedData("hcp_h4e2_word", (cnt_trial_type["wh2"]/numPerCond).toFixed(4) );
+                    Qualtrics.SurveyEngine.setEmbeddedData("hcp_h5e2_word", (cnt_trial_type["wh3"]/numPerCond).toFixed(4) );
+                    Qualtrics.SurveyEngine.setEmbeddedData("hcp_h6e2_word", (cnt_trial_type["wh4"]/numPerCond).toFixed(4) );
+                    Qualtrics.SurveyEngine.setEmbeddedData("hcp_h456e2_word",
+                            ((cnt_trial_type["wh2"]+cnt_trial_type["wh3"]+cnt_trial_type["wh4"])/(3*numPerCond)).toFixed(4) );
+
+                    Qualtrics.SurveyEngine.setEmbeddedData("cnt_per_cond", numPerCond );
+
+                    */
+
+                    // clear away the jspsych stage and move on
+                    clearDisplay();
+                }
+            });
+
+        });
+    </script>
+</body>
+
+</html>
