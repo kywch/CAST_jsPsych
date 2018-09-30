@@ -45,7 +45,7 @@ var progress_bar =
 
 if (flag_debug === false) {
     // not debugging -- actual setting
-    var num_block = 5; // # of main blocks X 24 probs per block
+    var num_block = 5; // # of main blocks X 28 probs per block
     var mindur_psolve = 1500;
 } else {
     // debugging
