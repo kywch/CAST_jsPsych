@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html class=''>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name="robots" content="noindex">
+    <title>The Choose-and-Solve Task</title>
+    <link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/gh/kywch/CAST_jsPsych@master/cast.css'>
+</head>
+
+<body>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'></script>
+    <script src='https://cdn.jsdelivr.net/gh/kywch/CAST_jsPsych@master/jspsych.js'></script>
+    <script src='https://cdn.jsdelivr.net/gh/kywch/CAST_jsPsych@master/jspsych-text.js'></script>
+    <script src='https://cdn.jsdelivr.net/gh/kywch/CAST_jsPsych@master/jspsych-poldrack-instructions.js'></script>
+    <script src='https://cdn.jsdelivr.net/gh/kywch/CAST_jsPsych@master/jspsych-single-stim-rev.js'></script>
+    <script src='https://cdn.jsdelivr.net/gh/kywch/CAST_jsPsych@master/poldrack_utils.js'></script>
+    <script src='https://cdn.jsdelivr.net/gh/kywch/CAST_jsPsych@master/probset.js'></script>
+    <script src='https://cdn.jsdelivr.net/gh/kywch/CAST_jsPsych@master/practice_problems.js'></script>
+    <script src='https://cdn.jsdelivr.net/gh/kywch/CAST_jsPsych@master/maadm_201807_confirmation.js'></script>
+
+    <script>
+        $(document).ready(function() {
+            sbjId = "test";
+            //var task_instruct_page1 = '<div class = centerbox><p class = block-text>Welcome to the choose-and-solve task!</p></div>';
+            var task_instruct_page1 = '<embed src="https://rawgit.com/kywch/CAST_jsPsych/master/instruction.html" width=100% height=80%>';
+            var task_instruct_page2 = '<div class = centerbox><p class = block-text>This task consists of four parts.</p>  ' +
+                '<p class = block-text>Your performance-based cash bonus will be determined in the last block of 140 trials.</p>' +
+                '<p class = block-text>1. Word practice (12 problems)</p>' +
+                '<p class = block-text>2. Math practice (12 problems)</p>' +
+                '<p class = block-text>3. Choose-and-solve practice (28 trials)</p>' +
+                '<p class = block-text>4. Five blocks of choose-and-solve trials (140 trials)</p></div>'
+            var task_instruct_page = {
+                type: 'poldrack-instructions',
+                data: {
+                    exp_stage: 'task_instruction',
+                    participant: sbjId,
+                },
+                pages: [task_instruct_page1, task_instruct_page2],
+                allow_keys: false,
+                show_clickable_nav: true,
+                timing_post_trial: 1000
+            };
+            var maadm_experiment = [];
+            maadm_experiment.push(task_instruct_page);
+            maadm_experiment.push({
+                timeline: sequence_word_practice
+            });
+            maadm_experiment.push({
+                timeline: sequence_math_practice
+            });
+            maadm_experiment.push({
+                timeline: sequence_practice_choice
+            });
+            maadm_experiment.push(enter_mainexp_page);
+            for (var ii = 0; ii < num_block; ii++) {
+                maadm_experiment.push({
+                    timeline: generate_main_block(ii)
+                });
+            }
+            jsPsych.init({
+                timeline: maadm_experiment,
+                display_element: "getDisplayElement",
+                on_finish: function(data) {
+                    jsPsych.data.localSave('cast_session.csv', 'csv');
+                    expfactory_finished = true;
+                    // clear away the jspsych stage and move on
+                    clearDisplay();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
