@@ -1,6 +1,6 @@
 # The Choose-And-Solve Task (CAST_jsPsych)
 
-This github repository contains the working task of the paper, titled "**Calculated Avoidance: Math Anxiety Predicts Math Avoidance in Effort-Based Decision-Making**" by Choe KW, Jenifer JB, Rozek CS, Berman MG, & Beilock SL (2019). The paper is published in Science Advances and available at https://advances.sciencemag.org/content/5/11/eaay1062
+This github repository contains the working task of the paper, titled "**Calculated Avoidance: Math Anxiety Predicts Math Avoidance in Effort-Based Decision-Making**" by Choe KW, Jenifer JB, Rozek CS, Berman MG, & Beilock SL (2019). The paper is published in Science Advances and freely available at https://advances.sciencemag.org/content/5/11/eaay1062
 
 You can try the task at: https://kywch.github.io/CAST_jsPsych/choose-and-solve-task.html
 
