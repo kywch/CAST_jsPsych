@@ -8,6 +8,7 @@ The problem set validation summary<br>
 
 ## Description of the problem set CSV files
 <img src="https://raw.githubusercontent.com/kywch/CAST_jsPsych/master/problem-set/Problem_format.jpg" width="600"/>
+
 * Math problem: The problem strings contain '?', which was converted into <font color=blue>the blue square</font>.
 * Word problems: The problem strings contain '?' and '9'. 
   * '?' was converted into <font color=blue>the blue square</font>. 
