@@ -4,6 +4,8 @@ This github repository contains the effort-based decision-making task of the pap
 
 You can try the choose-and-solve task (CAST) at https://kywch.github.io/CAST_jsPsych/choose-and-solve-task.html. For the CAST details, please see our paper. 
 
+The 3-alternative 1,999 math and 1,858 word problems used in the CAST are freely available at https://github.com/kywch/CAST_jsPsych/tree/master/problem-set.
+
 The CAST is implemented using javascript and <a href="https://www.jspsych.org/" target="_blank">the jsPsych library</a>. Some codes came from <a href="https://expfactory.github.io/" target="_blank">the Experiment Factory</a>.
 
 **Abstract<br>**
