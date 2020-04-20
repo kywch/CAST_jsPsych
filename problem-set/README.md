@@ -6,7 +6,7 @@ For details about creating and validating these problems, please see the section
 <img src="https://raw.githubusercontent.com/kywch/CAST_jsPsych/master/problem-set/Problem_format.jpg" width="600"/>
 
 The problem set validation summary<br>
-<img src="https://raw.githubusercontent.com/kywch/CAST_jsPsych/master/problem-set/Summary.jpg" width="600"/>
+<img src="https://raw.githubusercontent.com/kywch/CAST_jsPsych/master/problem-set/Summary.gif" width="600"/>
 
 ## Columns of the CAST_math_problem.csv
 
