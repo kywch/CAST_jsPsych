@@ -1,9 +1,11 @@
 # The Choose-And-Solve Task
 
 This github repository contains the effort-based decision-making task of the paper, titled "**Calculated Avoidance: Math Anxiety Predicts Math Avoidance in Effort-Based Decision-Making**" by Choe KW, Jenifer JB, Rozek CS, Berman MG, & Beilock SL (2019). The paper is published in Science Advances and freely available at https://advances.sciencemag.org/content/5/11/eaay1062.
-<p>
+<br>
+<br>
 <img src="https://raw.githubusercontent.com/kywch/CAST_jsPsych/master/Figure1.jpg" width="800"/>
-<p>
+<br>
+<br>
 You can try the choose-and-solve task (CAST) at https://kywch.github.io/CAST_jsPsych/choose-and-solve-task.html. For the CAST details, please see our paper. 
 
 The 3-alternative 1,999 math and 1,858 word problems used in the CAST are freely available at https://github.com/kywch/CAST_jsPsych/tree/master/problem-set.
