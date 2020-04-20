@@ -9,7 +9,7 @@ The problem set validation summary<br>
 ## Description of the problem set CSV files
 <img src="https://raw.githubusercontent.com/kywch/CAST_jsPsych/master/problem-set/Problem_format.jpg" width="600"/>
 
-* Math problem: The problem strings contain '?', which was converted into <font color=blue>the blue square</font>.
-* Word problems: The problem strings contain '?' and '9'. 
+* Math problem: The problem strings contain '?', like <b>'2?84'</b>, which was converted into <font color=blue>the blue square</font>.
+* Word problems: The problem strings contain '?' and '9', like <b>'E9?MI9ED'</b>. The csv file also contains the original words.  
   * '?' was converted into <font color=blue>the blue square</font>. 
   * '9' was converted into '~', which replaced some characters to make problems harder.
