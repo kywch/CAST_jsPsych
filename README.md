@@ -7,7 +7,6 @@ You can try the choose-and-solve task (CAST) at https://kywch.github.io/CAST_jsP
 The 3-alternative 1,999 math and 1,858 word problems used in the CAST are freely available at https://github.com/kywch/CAST_jsPsych/tree/master/problem-set.
 
 <br>
-<br>
 <img src="https://raw.githubusercontent.com/kywch/CAST_jsPsych/master/Choose_And_Solve_Task.jpg" width="600"/>
 <br>
 <br>
