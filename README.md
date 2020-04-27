@@ -4,7 +4,7 @@ This GitHub repository contains the effort-based decision-making task of the pap
 <br>
 <br>
 <br>
-<img src="https://raw.githubusercontent.com/kywch/CAST_jsPsych/master/Choose_And_Solve_Task.jpg" width="900"/>
+<img src="https://raw.githubusercontent.com/kywch/CAST_jsPsych/master/Choose_And_Solve_Task.jpg" width="600"/>
 <br>
 <br>
 You can try the choose-and-solve task (CAST) at https://kywch.github.io/CAST_jsPsych/choose-and-solve-task.html. For the CAST details, please see our paper. 
