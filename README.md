@@ -9,7 +9,6 @@ The 3-alternative 1,999 math and 1,858 word problems used in the CAST are freely
 <br>
 <img src="https://raw.githubusercontent.com/kywch/CAST_jsPsych/master/Choose_And_Solve_Task.jpg" width="600"/>
 <br>
-<br>
 
 The CAST is implemented using javascript and <a href="https://www.jspsych.org/">the jsPsych library</a>. Some codes came from <a href="https://expfactory.github.io/">the Experiment Factory</a>.
 
