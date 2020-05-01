@@ -1,7 +1,7 @@
-%% Math Anxiety Leads to Math Avoidane in Effort-Based Decision-Making
-% By Choe, Jenifer, Rozek, Berman, & Beilock
+%% Calculated Avoidance: Math Anxiety Predicts Math Avoidance in Effort-Based Decision-Making.
+% By Choe, Jenifer, Rozek, Berman, & Beilock (2019)
 %
-% All statistical tests performed in the order of appearance in the manuscript
+% All statistical tests performed in the order of appearance in the paper.
 % Tested with Matlab 2015b
 %
 % written by Kyoung Whan Choe 2019
