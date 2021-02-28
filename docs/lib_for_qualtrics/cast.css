@@ -1,0 +1,898 @@
+/*
+ * CSS for jsPsych experiments.
+ *
+ * This stylesheet provides minimal styling to make jsPsych
+ * experiments look polished without any additional styles.
+
+ Modified by Kyoung whan Choe (https://github.com/kywch/)
+ for the choose-and-solve task (CAST)
+
+ * the original jsPsych CSS was merged with poldrack style
+
+ */
+
+/* fonts and type */
+
+@import url(https://fonts.googleapis.com/css?family=Roboto|Raleway|Roboto+Slab) body {
+    font-family: 'Open Sans', 'Arial', sans-serif;
+    font-size: 18px;
+    line-height: 1.6em;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+p {
+    clear: both;
+    -webkit-margin-before: 1vh;
+    -webkit-margin-after: 1vh;
+}
+
+.very-small {
+    font-size: 50%;
+}
+
+.small {
+    font-size: 75%;
+}
+
+.large {
+    font-size: 125%;
+}
+
+.very-large {
+    font-size: 200%;
+}
+
+
+/* Classes for changing location of things */
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.center-content {
+    text-align: center;
+}
+
+.block-center {
+    margin: 1em auto;
+    display: block;
+}
+
+
+/* Form elements like input fields and buttons */
+
+input[type="text"] {
+    font-family: 'Open Sans', 'Arial', sans-serif;
+    font-size: 14px;
+}
+
+.consent, .consent>p {
+    color: black;
+}
+
+.jspsych-display-element {
+    margin: 0;
+}
+
+.centerbox {
+    font-family: 'Open Sans', 'Arial', sans-serif;
+    width: 80vh;
+    height: 60vh;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+
+/* problem-solving related */
+
+.math_question {
+    text-align: center;
+    margin: auto;
+    /*line-height: 0.2em;*/
+    font-size: 7vh;
+    word-spacing: 0.3em;
+    letter-spacing: 0.3em;
+}
+
+.math_answer {
+    text-align: center;
+    margin: auto;
+    /*line-height: 1em;*/
+    font-size: 7vh;
+    word-spacing: 0.5em;
+    margin-top: 0.5em;
+}
+
+.math_alt {
+    border-style: solid;
+    border-width: 0.03em;
+    display: inline-block;
+    width: 1em;
+}
+
+.math_square {
+    font-size: 1.6em;
+    line-height: 0;
+    color: blue;
+}
+
+hr {
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+    border-top: 2px solid black;
+    width: 35vmin;
+}
+
+
+/* word problem */
+
+.word_question {
+    text-align: center;
+    margin: auto;
+    line-height: 1.2em;
+    font-size: 8vh;
+    word-spacing: 0;
+    letter-spacing: 0.18em;
+    font-family: "Courier New", Courier, monospace;
+}
+
+.word_answer {
+    text-align: center;
+    margin: auto;
+    line-height: 1.1em;
+    font-size: 7vh;
+    word-spacing: 0.65em;
+    margin-top: 0.5em;
+    font-family: "Courier New", Courier, monospace;
+}
+
+.word_alt {
+    border-style: solid;
+    border-width: 0.03em;
+    display: inline-block;
+    width: 1em;
+}
+
+.word_square {
+    font-size: 0.96em;
+    color: blue;
+}
+
+
+/* choice_related */
+
+.left_box {
+    font-size: 4.5vh;
+    float: left;
+    width: 16.5vh;
+    height: 25vh;
+    margin-left: 22%;
+    margin-top: 2%;
+    border-style: solid;
+    border-width: 0.06em;
+    text-align: center;
+}
+
+.right_box {
+    font-size: 4.5vh;
+    float: right;
+    width: 16.5vh;
+    height: 25vh;
+    margin-right: 22%;
+    margin-top: 2%;
+    border-style: solid;
+    border-width: 0.06em;
+    text-align: center;
+}
+
+.choice_text {
+    margin-top: 2vh;
+    line-height: 1.2;
+}
+
+
+/* meta-cognition task related */
+
+.cntexpbox {
+    width: 80vh;
+    height: 60vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+canvas1, #canvas2, #backCanvas1, #backCanvas2 {
+    display: block;
+    margin: 0 auto;
+}
+
+.leftbox {
+    width: 240px;
+    height: 240px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-150%, -50%);
+}
+
+.rightbox {
+    width: 240px;
+    height: 240px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(50%, -50%);
+}
+
+.response_div {
+    height: 15vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, 140%);
+}
+
+.response_button_key {
+    width: 27vh;
+    height: 17vh;
+    background: #404040;
+    margin: 1vh;
+    position: relative;
+    color: #fff;
+    border-radius: 15px;
+    font-size: 4vh;
+    vertical-align: top;
+}
+
+
+/* progress bar related */
+
+.progress_box {
+    width: 30vw;
+    height: 8vh;
+    position: absolute;
+    top: 55vh;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, 0%);
+}
+
+.meter {
+    height: 3vh;
+    /* Can be anything */
+    position: relative;
+    background: #555;
+    -moz-border-radius: 1vh;
+    -webkit-border-radius: 1vh;
+    border-radius: 1vh;
+    padding: 0.6vh;
+    box-shadow: inset 0 -0.1vh 0.1vh rgba(255, 255, 255, 0.3);
+    margin-top: 2vh;
+}
+
+@keyframes expandWidth {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100;
+    }
+}
+
+@-webkit-keyframes mymove {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100;
+    }
+}
+
+.meter>span {
+    display: block;
+    height: 100%;
+    border-top-right-radius: 0.2vw;
+    border-bottom-right-radius: 0.2vw;
+    border-top-left-radius: 0.5vw;
+    border-bottom-left-radius: 0.5vw;
+    background-color: white;
+    background-image: linear-gradient( center bottom, rgb(43, 194, 83) 37%, rgb(84, 240, 84) 69%);
+    box-shadow: inset 0 0.2vw 0.9vw rgba(255, 255, 255, 0.3), inset 0 -0.2vw 0.6vw rgba(0, 0, 0, 0.4);
+    position: relative;
+    overflow: hidden;
+    animation: expandWidth 6s linear 0s;
+}
+
+
+/* Text based classes */
+
+
+/* Used for general instructions */
+
+.block-text {
+    width: 100%;
+    height 100vw;
+    text-align: justify;
+    margin: 0 auto;
+    margin-bottom: 1em;
+    font-size: 2.5vh;
+    line-height: 130%;
+}
+
+
+/* As above but centered instead of justified. Good for instructions with few lines */
+
+.center-block-text {
+    width: 100%;
+    height 100vw;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 1em;
+    font-size: 3vh;
+    line-height: 130%;
+}
+
+
+/* used for large text shown in the center of the screen, like FB or stimuli */
+
+.center-text {
+    text-align: center;
+    font-size: 90px;
+    position: relative;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+
+/* fixation should be used like this in: '<div class = centerbox><div class = fixation>+</div></div>'*/
+
+.fixation {
+    text-align: center;
+    font-size: 100px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+}
+
+
+/* Used in lists */
+
+.list-text li {
+    font-size: 2.5vmin;
+}
+
+
+/* flex box used to vertically and horizontally center an img.
+Sample html: <div class = centerbox><div class = img-container><img...></img></div></div>
+*/
+
+.img-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    /* align horizontal */
+    align-items: center;
+    /* align vertical */
+}
+
+#legal {
+    margin: 0 auto;
+    margin-top: 1.5em;
+    font-size: 0.8em;
+}
+
+
+/* Used for positioning during instructions */
+
+.jspsych-instructions-nav {
+    text-align: center;
+    margin-top: 50px;
+    position: relative;
+    z-index: 1;
+}
+
+.jspsych-instructions-nav p {
+    font-family: 'Roboto' serif;
+    font-size: 20px;
+    line-height: 20px;
+}
+
+
+/*
+ *
+ * PLUGIN: jspsych-poldrack-survey-multi-choice
+ *
+ */
+
+.jspsych-poldrack-survey-multi-choice-question {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.jspsych-poldrack-survey-multi-choice-text span.required {
+    color: darkred;
+}
+
+.jspsych-poldrack-survey-multi-choice-horizontal .jspsych-poldrack-survey-multi-choice-text {
+    text-align: left;
+}
+
+.jspsych-poldrack-survey-multi-choice-option {
+    line-height: 2;
+}
+
+.jspsych-poldrack-survey-multi-choice-horizontal .jspsych-poldrack-survey-multi-choice-option {
+    display: inline-block;
+    margin-left: 1em;
+    margin-right: 1em;
+    vertical-align: top;
+}
+
+label.jspsych-poldrack-survey-multi-choice-text input[type="radio"] {
+    margin-right: 1em;
+}
+
+#jspsych-poldrack-survey-multi-choice-next {
+    display: block;
+    margin: auto;
+}
+
+.jspsych-poldrack-survey-multi-choice-opts {
+    list-style: none;
+    width: 100%;
+    margin: 0;
+    padding: 0 0 35px;
+    display: block;
+    font-size: 13px;
+    line-height: 1.1em;
+}
+
+.jspsych-poldrack-survey-multi-choice-opt-label {
+    line-height: 1.1em;
+}
+
+.jspsych-poldrack-survey-multi-choice-opts:before {
+    content: '';
+    position: relative;
+    top: 11px;
+    /*left:9.5%;*/
+    display: block;
+    /*background-color:#efefef*/
+    ;
+    height: 4px;
+    width: 100%;
+}
+
+.jspsych-poldrack-survey-multi-choice-opts:last-of-type {
+    border-bottom: 0;
+}
+
+
+/*descendants of horizontal are inline-block*/
+
+.jspsych-poldrack-survey-multi-choice-horizontal .jspsych-poldrack-survey-multi-choice-opts li {
+    display: inline-block;
+    /*width:19%;*/
+    text-align: center;
+    vertical-align: top;
+    padding: 0px;
+}
+
+
+/*otherwise they are just block*/
+
+.jspsych-poldrack-survey-multi-choice-opts li {
+    display: block;
+    /*width:100% !important*/
+    ;
+    text-align: left;
+    vertical-align: top;
+    padding: 10px;
+}
+
+
+/*descendants of horizontal are block so they are above the option*/
+
+.jspsych-poldrack-survey-multi-choice-horizontal .jspsych-poldrack-survey-multi-choice-opts li input[type=radio] {
+    -webkit-appearance: none;
+    height: 1.5em;
+    position: relative;
+    background-color: #276FF4;
+    width: 1.5em;
+    border-radius: 50%;
+    outline: none;
+    font-size: 14px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    display: block;
+    position: relative;
+    top: 0;
+    left: 50%;
+    margin-left: -6px;
+}
+
+.jspsych-poldrack-survey-multi-choice-horizontal .jspsych-poldrack-survey-multi-choice-opts li input[type=radio]:checked:before {
+    content: '';
+    height: 0.4em;
+    width: 0.4em;
+    background-color: #FFF;
+    position: absolute;
+    border-radius: 50%;
+    top: 0.3em;
+    left: 0.3em;
+}
+
+
+/*otherwise they are inline-block so they are next to the option*/
+
+.jspsych-poldrack-survey-multi-choice-opts li input[type=radio] {
+    -webkit-appearance: none;
+    height: 1.5em;
+    position: relative;
+    background-color: #276FF4;
+    width: 1.5em;
+    border-radius: 50%;
+    outline: none;
+    font-size: 14px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    /*position:relative;
+  top:0;
+  left:0;*/
+    margin-right: 6px;
+}
+
+.jspsych-poldrack-survey-multi-choice-opts li input[type=radio]:checked:before {
+    content: '';
+    height: 0.4em;
+    width: 0.4em;
+    background-color: #FFF;
+    position: absolute;
+    border-radius: 50%;
+    top: 0.3em;
+    left: 0.3em;
+}
+
+
+/* Buttons */
+
+.jspsych-btn, #jspsych-instructions-next, #jspsych-instructions-back {
+    font-size: 22px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    padding: 12px 20px 12px 20px;
+    color: white;
+    background-color: cornflowerblue;
+    cursor: pointer;
+    line-height: 1.4;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+#jspsych-instructions-next, #jspsych-instructions-back {
+    width: 250px;
+}
+
+#jspsych-instructions-next, #jspsych-instructions-back {
+    padding: 12px 40px 12px 40px;
+}
+
+.jspsych-btn:hover, #jspsych-instructions-next:hover, #jspsych-instructions-back:hover {
+    border-color: #999;
+    background-color: darkblue;
+}
+
+#jspsych-survey-multi-choice-next {
+    padding-bottom: 10px;
+}
+
+
+/*
+ *
+ * PLUGIN: jspsych-survey-text
+ *
+ */
+
+.jspsych-survey-text {
+    margin: 0.25em 0em;
+}
+
+.jspsych-survey-text-question>textarea, #jspsych-survey-text-next {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 24px;
+    padding: 6px;
+}
+
+
+/*
+ *
+ * PLUGIN: jspsych-attention-check
+ *
+ */
+
+#jspsych-attention-check-stimulus {
+    width: 50vw;
+    height: 60vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+.jspsych-attention-check-stimulus>p {
+    width: 100%;
+    height 100vw;
+    text-align: justify;
+    margin: 0 auto;
+    margin-bottom: 1em;
+    font-size: 24px;
+    line-height: 120%;
+}
+
+
+/*
+ *
+ * PLUGIN: jspsych-multi-choice-nav
+ *
+ */
+
+.jspsych-survey-multi-choice-question {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+.jspsych-survey-multi-choice-text span.required {
+    color: darkred;
+}
+
+.jspsych-survey-multi-choice-horizontal .jspsych-survey-multi-choice-text {
+    text-align: center;
+}
+
+.jspsych-survey-multi-choice-option {
+    line-height: 2;
+}
+
+.jspsych-survey-multi-choice-horizontal .jspsych-survey-multi-choice-option {
+    display: inline-block;
+    margin-left: 1em;
+    margin-right: 1em;
+    vertical-align: top;
+}
+
+label.jspsych-survey-multi-choice-text input[type="radio"] {
+    margin-right: 1em;
+}
+
+#jspsych-survey-multi-choice-next {
+    display: block;
+    margin: auto;
+}
+
+.jspsych-survey-multi-choice-nav {
+    padding-top: 20px;
+}
+
+
+/* jsPsych progress bar */
+
+#jspsych-progressbar-container {
+    color: #777;
+    border-bottom: 2px solid #dedede;
+    background-color: #f3f3f3;
+    margin-bottom: 1em;
+    text-align: center;
+    padding: 5px 0px;
+}
+
+#jspsych-progressbar-container s {}
+
+#jspsych-progressbar-outer {
+    background-color: #dedede;
+    border-radius: 5px;
+    padding: 1px;
+    width: 600px;
+    margin: auto;
+}
+
+#jspsych-progressbar-inner {
+    background-color: #aaa;
+    /* #3EB3D7; */
+    width: 0%;
+    height: 1vh;
+    border-radius: 5px;
+}
+
+
+/* PLUGIN: jspsych-animation */
+
+#jspsych-animation-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* PLUGIN: jspsych-categorize-animation */
+
+#jspsych-categorize-animation-stimulus {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* PLUGIN: jspsych-categorize */
+
+#jspsych-categorize-stimulus {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.feedback {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* PLUGIN: jspsych-free-sort */
+
+#jspsych-free-sort-arena {
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid #444;
+}
+
+.jspsych-free-sort-draggable {
+    cursor: move;
+}
+
+#jspsych-free-sort-done-btn {
+    display: block;
+    margin: auto;
+    margin-top: 25px;
+}
+
+
+/* PLUGIN: jspsych-multi-stim-multi-response */
+
+#jspsych-multi-stim-multi-response-stimulus {
+    display: block;
+    margin: auto;
+}
+
+
+/* PLUGIN: jspsych-palmer */
+
+#jspsych-palmer-snapCanvas {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* PLUGIN: jspsych-same-different */
+
+.jspsych-same-different-stimulus {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* PLUGIN: jspsych-single-stim */
+
+#jspsych-single-stim-stimulus {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* PLUGIN: jspsych-survey-likert */
+
+.jspsych-survey-likert-statement {
+    display: block;
+    font-size: 18px;
+    padding-top: 30px;
+    margin-bottom: 10px;
+}
+
+.jspsych-survey-likert-opts {
+    list-style: none;
+    width: 100%;
+    margin: 0;
+    padding: 0 0 35px;
+    display: block;
+    font-size: 14px;
+    line-height: 1.1em;
+}
+
+.jspsych-survey-likert-opt-label {
+    line-height: 1.1em;
+}
+
+.jspsych-survey-likert-opts:before {
+    content: '';
+    position: relative;
+    top: 11px;
+    /*left:9.5%;*/
+    display: block;
+    background-color: #efefef;
+    height: 4px;
+    width: 100%;
+}
+
+.jspsych-survey-likert-opts:last-of-type {
+    border-bottom: 0;
+}
+
+.jspsych-survey-likert-opts li {
+    display: inline-block;
+    /*width:19%;*/
+    text-align: center;
+    vertical-align: top;
+}
+
+.jspsych-survey-likert-opts li input[type=radio] {
+    display: block;
+    position: relative;
+    top: 0;
+    left: 50%;
+    margin-left: -6px;
+}
+
+
+/** PLUGIN: jspsych-visual-search-circle **/
+
+#jspsych-visual-search-circle-svg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* PLUGIN: jspsych-vsl-animate-occlusion */
+
+#jspsych-vsl-animate-occlusion-canvas {
+    display: block;
+    margin: auto;
+}
+
+
+/* PLUGIN: jspsych-xab */
+
+.jspsych-xab-stimulus {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
