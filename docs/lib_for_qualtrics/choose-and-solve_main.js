@@ -38,6 +38,7 @@ var sbj_id = ""; // mturk id
 var task_id = ""; // the prefix for the save file
 
 var flag_debug = true;
+var flag_save = false;
 var time_psolve = 7000; // ms
 var time_choice = 3000; // ms
 var progress_bar =
