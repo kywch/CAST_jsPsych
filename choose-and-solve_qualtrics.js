@@ -56,7 +56,6 @@ Qualtrics.SurveyEngine.addOnload(function () {
     // `requiredResources` must include all the required JS files
     var task_github = "https://kywch.github.io/CAST_jsPsych/lib_for_qualtrics/"; // https://<your-github-username>.github.io/<your-experiment-name>
     var requiredResources = [
-        "https://cdnjs.cloudflare.com/ajax/libs/dropbox.js/4.0.30/Dropbox-sdk.min.js",
         task_github + "jquery.min.js",
         task_github + "jspsych.js",
         task_github + "jspsych-text.js",
