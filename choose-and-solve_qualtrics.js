@@ -134,7 +134,6 @@ Qualtrics.SurveyEngine.addOnload(function () {
 
                 /* Change 4: Summarize the data */
 
-                // generate the key & summary stats
                 var cnt_trial_type = {};
                 // for math trials
                 cnt_trial_type["me0"] = 0; // # of hard math chosen / solved when 2 vs 2
