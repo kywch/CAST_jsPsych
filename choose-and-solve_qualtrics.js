@@ -252,8 +252,6 @@ Qualtrics.SurveyEngine.addOnload(function () {
 
                 Qualtrics.SurveyEngine.setEmbeddedData("cnt_per_cond", numPerCond );
 
-                save_data();
-
                 // finishing up
                 function sleep(time) {
                     return new Promise((resolve) => setTimeout(resolve, time));
