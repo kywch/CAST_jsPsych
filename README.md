@@ -4,6 +4,8 @@ This GitHub repository contains the effort-based decision-making task of the pap
 
 You can try the CAST at https://kywch.github.io/CAST_jsPsych/choose-and-solve-task.html or by downloading this repository, unzipping it, and double-clicking the ```choose-and-solve-task.html``` file on your computer. 
 
+You can embed the CAST in your Qualtrics survey by following this tutorial: https://kywch.github.io/jsPsych-in-Qualtrics/choose-and-solve/.
+
 The 3-alternative 1,999 math and 1,858 word problems used in the CAST are freely available at https://github.com/kywch/CAST_jsPsych/tree/master/problem-set.
 
 <img src="https://kywch.github.io/CAST_jsPsych/Choose_And_Solve_Task.jpg" width="600"/>
