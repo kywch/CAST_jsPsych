@@ -85,14 +85,6 @@ Qualtrics.SurveyEngine.addOnload(function () {
     /* Change 3: Wrapping jsPsych.init() in a function */
     function initExp() {
 
-        // get Mturk participant id
-        sbj_id = "${e://Field/workerId}";
-        sbj_id = sbj_id.trim();
-        if (sbj_id.length == 0) {
-            console.log("No participant id. Stopping the experiment.");
-            //return false;
-        }
-
         // instruction image location
         var task_instruct_page1 = '<div class = centerbox><p class = block-text>Welcome to the choose-and-solve task!</p></div>';
         var task_instruct_page2 =
